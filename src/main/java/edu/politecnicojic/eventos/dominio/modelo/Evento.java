@@ -1,4 +1,4 @@
-package edu.politecnicojic.eventos.dominio.modelos;
+package edu.politecnicojic.eventos.dominio.modelo;
 
 import java.util.Date;
 import java.util.List;

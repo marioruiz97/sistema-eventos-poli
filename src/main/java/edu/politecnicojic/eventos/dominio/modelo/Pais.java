@@ -1,4 +1,5 @@
-package edu.politecnicojic.eventos.dominio.modelos;
+package edu.politecnicojic.eventos.dominio.modelo;
+
 
 public class Pais {
     String codigoPais;

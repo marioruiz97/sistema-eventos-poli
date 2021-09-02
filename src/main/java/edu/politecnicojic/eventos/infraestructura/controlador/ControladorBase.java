@@ -28,4 +28,13 @@ public class ControladorBase {
         }).collect(Collectors.toList());
         return new ResponseEntity<>(new RespuestaApi(mensaje, errores), HttpStatus.BAD_REQUEST);
     }
+
+    public RespuestaApi crearRespuestaExitosa(String mensaje) {
+        return new RespuestaApi(mensaje);
+    }
+
+    public RespuestaApi<Object> crearRespuestaExitosa(String mensaje,Object datos) {
+        return new RespuestaApi(mensaje, datos);
+    }
+
 }

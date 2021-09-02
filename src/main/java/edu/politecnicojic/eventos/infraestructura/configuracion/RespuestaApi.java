@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
 
 @AllArgsConstructor
-public class RespuestaApi {
+public class RespuestaApi<T> {
 
     @Getter
     @Setter
@@ -15,7 +14,9 @@ public class RespuestaApi {
 
     @Getter
     @Setter
-    private List<String> errores;
+    private T datos;
 
-
+    public RespuestaApi(String mensaje) {
+        this.mensaje = mensaje;
+    }
 }

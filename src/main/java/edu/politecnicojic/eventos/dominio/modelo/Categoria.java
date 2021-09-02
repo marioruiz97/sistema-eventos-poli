@@ -1,6 +1,9 @@
 package edu.politecnicojic.eventos.dominio.modelo;
 
+import lombok.Data;
+
+@Data
 public class Categoria {
-    String codigoCategoria;
+    String id;
     String nombre;
 }

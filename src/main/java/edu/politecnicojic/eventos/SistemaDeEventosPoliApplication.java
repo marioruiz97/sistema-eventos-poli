@@ -10,5 +10,5 @@ public class SistemaDeEventosPoliApplication {
     public static void main(String[] args) {
         SpringApplication.run(SistemaDeEventosPoliApplication.class, args);
     }
-    
+
 }

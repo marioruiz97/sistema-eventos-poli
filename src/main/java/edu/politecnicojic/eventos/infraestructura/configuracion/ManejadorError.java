@@ -1,5 +1,6 @@
 package edu.politecnicojic.eventos.infraestructura.configuracion;
 
+import edu.politecnicojic.eventos.dominio.excepcion.ExcepcionElementoNoEncontrado;
 import edu.politecnicojic.eventos.dominio.excepcion.ExcepcionFlujo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
@@ -29,11 +30,12 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex, respuestaError, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
-    @ExceptionHandler(value = {ExcepcionFlujo.class})
-    protected ResponseEntity<Object> manejarExcepcionesFlujo(ConstraintViolationException ex, WebRequest request) {
+    @ExceptionHandler(value = {ExcepcionFlujo.class, ExcepcionElementoNoEncontrado.class})
+    protected ResponseEntity<Object> manejarExcepcionesFlujo(RuntimeException ex, WebRequest request) {
         final String mensaje = "Se ha presentado un error de flujo, valide la acción realizada";
         RespuestaApi<String> respuestaError = new RespuestaApi(mensaje, ex.getMessage());
-        return handleExceptionInternal(ex, respuestaError, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+        HttpStatus status = (ex instanceof ExcepcionFlujo) ? HttpStatus.BAD_REQUEST : HttpStatus.NOT_FOUND;
+        return handleExceptionInternal(ex, respuestaError, new HttpHeaders(), status, request);
     }
 
 

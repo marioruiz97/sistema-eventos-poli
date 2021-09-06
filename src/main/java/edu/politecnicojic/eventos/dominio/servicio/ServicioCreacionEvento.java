@@ -1,6 +1,8 @@
 package edu.politecnicojic.eventos.dominio.servicio;
 
+import edu.politecnicojic.eventos.dominio.excepcion.ExcepcionElementoNoEncontrado;
 import edu.politecnicojic.eventos.dominio.excepcion.ExcepcionFlujo;
+import edu.politecnicojic.eventos.dominio.modelo.Comentario;
 import edu.politecnicojic.eventos.dominio.modelo.Evento;
 import edu.politecnicojic.eventos.dominio.repositorio.RepositorioEvento;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +35,12 @@ public class ServicioCreacionEvento {
     private void validarAsistentesAlEvento() {
         //TODO: realizar la logica cuando se agregue asistentes e invitados al evento
         //TODO: ir recolectando los usuarios que no existen e informar de manera controlada
+    }
+
+    public void agregarComentario(String idEvento, Comentario comentario) {
+        Evento evento = repositorioEvento.buscarPorId(idEvento).orElse(null);
+        if (evento == null) throw new ExcepcionElementoNoEncontrado("No se ha encontrado el evento que buscas");
+        evento.agregarComentario(comentario);
+        repositorioEvento.guardarEvento(evento);
     }
 }

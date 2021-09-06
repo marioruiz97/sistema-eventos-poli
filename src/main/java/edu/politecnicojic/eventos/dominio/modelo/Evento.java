@@ -1,15 +1,20 @@
 package edu.politecnicojic.eventos.dominio.modelo;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Document
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Evento {
 
     @Id
@@ -47,5 +52,12 @@ public class Evento {
         this.categorias = categorias;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
+    }
+
+    public void agregarComentario(Comentario comentario) {
+        if (comentarios == null || comentarios.isEmpty()) {
+            comentarios = new ArrayList<>();
+        }
+        comentarios.add(comentario);
     }
 }

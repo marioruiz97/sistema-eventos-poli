@@ -9,6 +9,8 @@ public class ServicioLugar {
 
     private RepositorioLugar repositorioLugar;
 
+    // @Autowired TODO: cuando se cree el repo agregar constructor, volver final la variable y descomentar autowired
+
     public Lugar buscar(Lugar lugar) {
         return repositorioLugar.buscarPorNombreYDireccion(lugar.getNombre(), lugar.getDireccion()).orElse(null);
     }

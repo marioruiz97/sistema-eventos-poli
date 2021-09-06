@@ -17,8 +17,8 @@ public class ServicioConsultaEvento {
         this.repositorioEvento = repositorioEvento;
     }
 
-    public List<Evento> buscarPorCategorias(List<String> categoria) {
-        return repositorioEvento.buscarPorCategorias(categoria);
+    public List<Evento> buscarPorCategorias(List<String> categorias) {
+        return repositorioEvento.buscarPorCategorias(categorias);
     }
 
     public List<Evento> buscar() {

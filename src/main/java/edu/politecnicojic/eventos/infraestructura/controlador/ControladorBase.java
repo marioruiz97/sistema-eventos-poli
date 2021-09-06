@@ -17,8 +17,8 @@ public class ControladorBase {
      * Método usado cuando hay errores en el binding result, retorna un bad_request
      * con los errores existentes
      *
-     * @param result
-     * @return
+     * @param result resultado de la validación hecha por el controlador
+     * @return retorna una respuesta al cliente de tipo BAD_REQUEST
      */
     public ResponseEntity<RespuestaApi> objetoInvalido(BindingResult result) {
         String mensaje = "EL objeto ingresado no cumple las validaciones mínimas";
@@ -26,15 +26,15 @@ public class ControladorBase {
             String field = StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(err.getField()), ' ') + ": ";
             return field + err.getDefaultMessage();
         }).collect(Collectors.toList());
-        return new ResponseEntity<>(new RespuestaApi(mensaje, errores), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new RespuestaApi<>(mensaje, errores), HttpStatus.BAD_REQUEST);
     }
 
     public RespuestaApi crearRespuestaExitosa(String mensaje) {
-        return new RespuestaApi(mensaje);
+        return new RespuestaApi<>(mensaje);
     }
 
-    public RespuestaApi<Object> crearRespuestaExitosa(String mensaje,Object datos) {
-        return new RespuestaApi(mensaje, datos);
+    public RespuestaApi<Object> crearRespuestaExitosa(String mensaje, Object datos) {
+        return new RespuestaApi<>(mensaje, datos);
     }
 
 }

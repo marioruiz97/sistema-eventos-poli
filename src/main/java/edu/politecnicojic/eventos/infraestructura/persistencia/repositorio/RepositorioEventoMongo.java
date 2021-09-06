@@ -14,12 +14,18 @@ import java.util.Optional;
 @Repository
 public interface RepositorioEventoMongo extends MongoRepository<Evento, String>, RepositorioEvento {
 
+    /**
+     * Métodos de búsqueda utilizando JPQL
+     */
     @Transactional(readOnly = true)
     List<Evento> findEventosByCategoriasIn(List<Categoria> categorias);
 
     @Transactional(readOnly = true)
     Optional<Evento> findEventoById(String id);
 
+    /**
+     * Métodos implementados desde la interfaz RepositorioEvento
+     */
     @Override
     default Evento crear(Evento evento) {
         return insert(evento);
@@ -33,7 +39,7 @@ public interface RepositorioEventoMongo extends MongoRepository<Evento, String>,
     @Override
     default List<Evento> buscarPorCategorias(List<String> nombresCategoria) {
         final List<Categoria> listadoCategorias = new ArrayList<>();
-        nombresCategoria.stream().forEach(categoria -> listadoCategorias.add(new Categoria(categoria)));
+        nombresCategoria.forEach(categoria -> listadoCategorias.add(new Categoria(categoria)));
         return findEventosByCategoriasIn(listadoCategorias);
     }
 

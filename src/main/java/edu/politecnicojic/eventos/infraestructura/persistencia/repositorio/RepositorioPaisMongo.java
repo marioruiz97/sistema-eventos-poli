@@ -3,7 +3,6 @@ package edu.politecnicojic.eventos.infraestructura.persistencia.repositorio;
 import edu.politecnicojic.eventos.dominio.modelo.Pais;
 import edu.politecnicojic.eventos.dominio.repositorio.RepositorioPais;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

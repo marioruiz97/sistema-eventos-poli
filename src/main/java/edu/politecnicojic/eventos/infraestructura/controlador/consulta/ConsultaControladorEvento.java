@@ -23,7 +23,7 @@ public class ConsultaControladorEvento {
     }
 
     @GetMapping
-    public List<Evento> buscar(@RequestParam(name = "categoria", required = false) List<String> categorias) {
+    public List<Evento> buscarEventos(@RequestParam(name = "categoria", required = false) List<String> categorias) {
         return categorias != null && !categorias.isEmpty() ? manejadorEvento.buscarPorCategorias(categorias)
                 : manejadorEvento.buscar();
     }

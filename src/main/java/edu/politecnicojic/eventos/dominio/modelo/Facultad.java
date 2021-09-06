@@ -1,8 +1,12 @@
 package edu.politecnicojic.eventos.dominio.modelo;
 
+import lombok.Getter;
+
+@Getter
 public class Facultad {
-    String codigoFacultad;
-    String nombre;
-    String ubicacion;
-    String numeroTelefono;
+
+    private String codigoFacultad;
+    private String nombre;
+    private String ubicacion;
+    private String numeroTelefono;
 }

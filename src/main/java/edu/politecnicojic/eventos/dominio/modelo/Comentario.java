@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 public class Comentario {
 
-    String mensaje;
-    String nombreUsuario;
+    private String mensaje;
+    private String nombreUsuario;
 }

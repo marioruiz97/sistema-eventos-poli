@@ -2,18 +2,12 @@ package edu.politecnicojic.eventos.infraestructura.configuracion;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
-
+@Getter
 @AllArgsConstructor
 public class RespuestaApi<T> {
 
-    @Getter
-    @Setter
-    private String mensaje;
-
-    @Getter
-    @Setter
+    private final String mensaje;
     private T datos;
 
     public RespuestaApi(String mensaje) {

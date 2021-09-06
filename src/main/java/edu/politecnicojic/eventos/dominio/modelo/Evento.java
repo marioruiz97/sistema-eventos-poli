@@ -18,25 +18,26 @@ import java.util.List;
 public class Evento {
 
     @Id
-    String id;
+    private String id;
 
-    String titulo;
-    String descripcion;
+    private String titulo;
+    private String descripcion;
 
-    @Indexed(unique = false)
-    List<Categoria> categorias;
+    @Indexed
+    private List<Categoria> categorias;
 
-    LocalDateTime fechaInicio;
-    LocalDateTime fechaFin;
+    private LocalDateTime fechaInicio;
+    private LocalDateTime fechaFin;
 
-    Sede sede;
+    private Sede sede;
 
-    Lugar lugar;
+    private Lugar lugar;
 
-    Facultad facultadOrganizadora;
+    private Facultad facultadOrganizadora;
 
-    List<Comentario> comentarios;
+    private List<Comentario> comentarios;
 
+    // TODO: borrar constructor si es necesario
     public Evento(String titulo, String descripcion, List<Categoria> categorias, LocalDateTime fechaInicio, LocalDateTime fechaFin, Lugar lugar) {
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -58,6 +59,6 @@ public class Evento {
         if (comentarios == null || comentarios.isEmpty()) {
             comentarios = new ArrayList<>();
         }
-        comentarios.add(comentario);
+        getComentarios().add(comentario);
     }
 }

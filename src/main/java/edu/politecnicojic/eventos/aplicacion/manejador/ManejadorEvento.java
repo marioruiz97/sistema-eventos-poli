@@ -31,8 +31,8 @@ public class ManejadorEvento {
         return servicioCreacionEvento.crear(evento);
     }
 
-    public List<Evento> buscarPorCategorias(List<String> categoria) {
-        return servicioConsultaEvento.buscarPorCategorias(categoria);
+    public List<Evento> buscarPorCategorias(List<String> categorias) {
+        return servicioConsultaEvento.buscarPorCategorias(categorias);
     }
 
     public List<Evento> buscar() {

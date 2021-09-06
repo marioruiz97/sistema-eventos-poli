@@ -32,7 +32,7 @@ public class ComandoControladorEvento extends ControladorBase {
     public ResponseEntity<RespuestaApi> crear(@RequestBody @Valid NuevoEventoDto nuevoEventoDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return objetoInvalido(bindingResult);
         Evento nuevoEvento = manejadorEvento.crear(nuevoEventoDto);
-        RespuestaApi respuesta = crearRespuestaExitosa("Se ha creado Evento con éxito", nuevoEvento);
+        RespuestaApi<?> respuesta = crearRespuestaExitosa("Se ha creado Evento con éxito", nuevoEvento);
         return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
     }
 
@@ -44,7 +44,7 @@ public class ComandoControladorEvento extends ControladorBase {
 
         if (bindingResult.hasErrors()) return objetoInvalido(bindingResult);
         manejadorEvento.agregarComentario(idEvento, comentarioDto);
-        RespuestaApi respuesta = crearRespuestaExitosa("Se ha agregado comentario con éxito");
+        RespuestaApi<?> respuesta = crearRespuestaExitosa("Se ha agregado comentario con éxito");
         return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
 

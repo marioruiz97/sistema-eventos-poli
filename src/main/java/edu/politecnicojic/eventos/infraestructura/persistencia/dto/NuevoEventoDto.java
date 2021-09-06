@@ -1,6 +1,6 @@
 package edu.politecnicojic.eventos.infraestructura.persistencia.dto;
 
-import edu.politecnicojic.eventos.dominio.modelo.*;
+import edu.politecnicojic.eventos.dominio.modelo.Categoria;
 import lombok.Data;
 
 import javax.validation.Valid;
@@ -28,7 +28,7 @@ public class NuevoEventoDto {
     @NotNull @FutureOrPresent
     LocalDateTime fechaFin;
 
-    //@NotNull @Valid
+    //@NotNull @Valid TODO: agregar lógica de lugares
     //Lugar lugar;
 
 }

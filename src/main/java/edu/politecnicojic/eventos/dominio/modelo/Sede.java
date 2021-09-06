@@ -1,7 +1,11 @@
 package edu.politecnicojic.eventos.dominio.modelo;
 
+import lombok.Getter;
+
+@Getter
 public class Sede {
-    String codigoSede;
-    String nombre;
-    Ciudad ciudad;
+
+    private String codigoSede;
+    private String nombre;
+    private Ciudad ciudad;
 }

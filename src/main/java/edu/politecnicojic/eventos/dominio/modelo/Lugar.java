@@ -4,7 +4,8 @@ import lombok.Getter;
 
 @Getter
 public class Lugar {
-    String nombre;
-    String direccion;
-    Ciudad ciudad;
+    
+    private String nombre;
+    private String direccion;
+    private Ciudad ciudad;
 }

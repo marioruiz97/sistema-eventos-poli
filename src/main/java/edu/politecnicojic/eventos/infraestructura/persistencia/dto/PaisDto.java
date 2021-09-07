@@ -9,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
 public class PaisDto {
 
     @NotEmpty
-    String codigoPais;
+    Integer codigoPais;
 
     @NotEmpty
     String nombre;

@@ -29,10 +29,11 @@ public class EntidadFacultad implements Serializable {
 
     @Size(max = 15)
     @NotEmpty
+    @Column(name = "nro_telefono", nullable = false)
     private String numeroTelefono;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "id_decano", unique = true)
+    @OneToOne
+    @JoinColumn(name = "id_decano")
     private EntidadEmpleado decano;
 
 }

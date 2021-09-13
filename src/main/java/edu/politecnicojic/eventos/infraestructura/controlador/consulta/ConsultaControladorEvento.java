@@ -1,7 +1,7 @@
 package edu.politecnicojic.eventos.infraestructura.controlador.consulta;
 
 import edu.politecnicojic.eventos.aplicacion.manejador.ManejadorEvento;
-import edu.politecnicojic.eventos.dominio.modelo.Evento;
+import edu.politecnicojic.eventos.dominio.modelo.evento.Evento;
 import edu.politecnicojic.eventos.infraestructura.configuracion.Constantes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

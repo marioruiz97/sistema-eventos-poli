@@ -1,10 +1,10 @@
 package edu.politecnicojic.eventos.dominio.repositorio;
 
-import edu.politecnicojic.eventos.dominio.modelo.Categoria;
-
 import java.util.List;
+
+import edu.politecnicojic.eventos.dominio.modelo.evento.Categoria;
 
 public interface RepositorioCategoria {
 
-    List<Categoria> buscarCategoriasDisponibles();
+	List<Categoria> buscarCategoriasDisponibles();
 }

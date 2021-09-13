@@ -1,13 +1,12 @@
 package edu.politecnicojic.eventos.infraestructura.persistencia.repositorio;
 
-import edu.politecnicojic.eventos.dominio.modelo.Categoria;
-import edu.politecnicojic.eventos.dominio.modelo.Evento;
+import edu.politecnicojic.eventos.dominio.modelo.evento.Categoria;
+import edu.politecnicojic.eventos.dominio.modelo.evento.Evento;
 import edu.politecnicojic.eventos.dominio.repositorio.RepositorioEvento;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,8 +16,8 @@ public interface RepositorioEventoMongo extends MongoRepository<Evento, String>,
     /**
      * Métodos de búsqueda utilizando JPQL
      */
-    @Transactional(readOnly = true)
-    List<Evento> findEventosByCategoriasIn(List<Categoria> categorias);
+    //@Transactional(readOnly = true)
+    //List<Evento> findEventosByCategoriasIn(List<Categoria> categorias);
 
     @Transactional(readOnly = true)
     Optional<Evento> findEventoById(String id);
@@ -32,16 +31,14 @@ public interface RepositorioEventoMongo extends MongoRepository<Evento, String>,
     }
 
     @Override
-    default List<Evento> buscar() {
+    default List<Evento> buscarTodos() {
         return findAll();
     }
 
-    @Override
-    default List<Evento> buscarPorCategorias(List<String> nombresCategoria) {
-        final List<Categoria> listadoCategorias = new ArrayList<>();
-        nombresCategoria.forEach(categoria -> listadoCategorias.add(new Categoria(categoria)));
-        return findEventosByCategoriasIn(listadoCategorias);
-    }
+    //@Override
+    //default List<Evento> buscarPorCategorias(List<Categoria> listadoCategorias) {
+    //    return findEventosByCategoriasIn(listadoCategorias);
+    //}
 
     @Override
     default Optional<Evento> buscarPorId(String idEvento) {
@@ -49,7 +46,7 @@ public interface RepositorioEventoMongo extends MongoRepository<Evento, String>,
     }
 
     @Override
-    default void guardarEvento(Evento evento) {
+    default void actualizarEvento(Evento evento) {
         save(evento);
     }
 }

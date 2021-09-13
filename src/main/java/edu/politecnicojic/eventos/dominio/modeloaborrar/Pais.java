@@ -1,16 +1,20 @@
-package edu.politecnicojic.eventos.dominio.modelo;
+package edu.politecnicojic.eventos.dominio.modeloaborrar;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
-@Data
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Categoria {
+public class Pais {
 
+    private Integer codigo;
+
+    @Size(max = 20)
     @NotEmpty
     private String nombre;
 

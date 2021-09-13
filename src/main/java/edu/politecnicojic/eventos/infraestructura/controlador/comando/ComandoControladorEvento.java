@@ -1,7 +1,7 @@
 package edu.politecnicojic.eventos.infraestructura.controlador.comando;
 
 import edu.politecnicojic.eventos.aplicacion.manejador.ManejadorEvento;
-import edu.politecnicojic.eventos.dominio.modelo.Evento;
+import edu.politecnicojic.eventos.dominio.modelo.evento.Evento;
 import edu.politecnicojic.eventos.infraestructura.configuracion.Constantes;
 import edu.politecnicojic.eventos.infraestructura.configuracion.RespuestaApi;
 import edu.politecnicojic.eventos.infraestructura.controlador.ControladorBase;

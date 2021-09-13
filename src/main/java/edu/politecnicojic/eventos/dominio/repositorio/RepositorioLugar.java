@@ -1,10 +1,16 @@
 package edu.politecnicojic.eventos.dominio.repositorio;
 
-import edu.politecnicojic.eventos.dominio.modelo.Lugar;
-
+import java.util.List;
 import java.util.Optional;
+
+import edu.politecnicojic.eventos.dominio.modelo.lugar.Lugar;
 
 public interface RepositorioLugar {
 
-    Optional<Lugar> buscarPorNombreYDireccion(String nombre, String direccion);
+	Lugar crear(Lugar lugar);
+
+	List<Lugar> buscarTodos();
+
+	Optional<Lugar> buscarPorNombreYDireccion(String nombre, String direccion);
+
 }

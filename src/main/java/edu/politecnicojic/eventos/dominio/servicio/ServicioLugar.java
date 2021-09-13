@@ -1,17 +1,30 @@
 package edu.politecnicojic.eventos.dominio.servicio;
 
-import edu.politecnicojic.eventos.dominio.modelo.Lugar;
-import edu.politecnicojic.eventos.dominio.repositorio.RepositorioLugar;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import edu.politecnicojic.eventos.dominio.modelo.lugar.Lugar;
+import edu.politecnicojic.eventos.dominio.repositorio.RepositorioLugar;
 
 @Service
 public class ServicioLugar {
 
-    private RepositorioLugar repositorioLugar;
+	private final RepositorioLugar repositorioLugar;
 
-    // @Autowired TODO: cuando se cree el repo agregar constructor, volver final la variable y descomentar autowired
+	@Autowired
+	public ServicioLugar(RepositorioLugar repositorioLugar) {
+		this.repositorioLugar = repositorioLugar;
+	}
 
-    public Lugar buscar(Lugar lugar) {
-        return repositorioLugar.buscarPorNombreYDireccion(lugar.getNombre(), lugar.getDireccion()).orElse(null);
-    }
+	public List<Lugar> buscarTodos() {
+		return repositorioLugar.buscarTodos();
+	}
+
+	public Lugar crear(Lugar lugar) {
+		lugar.validarCampos();
+		return repositorioLugar.crear(lugar);
+	}
+
 }

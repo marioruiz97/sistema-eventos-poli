@@ -1,7 +1,7 @@
 package edu.politecnicojic.eventos.infraestructura.persistencia.repositorio;
 
-import edu.politecnicojic.eventos.dominio.modelo.Categoria;
-import edu.politecnicojic.eventos.dominio.modelo.Evento;
+import edu.politecnicojic.eventos.dominio.modelo.evento.Categoria;
+import edu.politecnicojic.eventos.dominio.modelo.evento.Evento;
 import edu.politecnicojic.eventos.dominio.repositorio.RepositorioCategoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;

@@ -2,7 +2,10 @@ package edu.politecnicojic.eventos.dominio.excepcion;
 
 public class ExcepcionFlujo extends RuntimeException {
 
-    public ExcepcionFlujo(String mensaje) {
-        super(mensaje);
-    }
+	private static final long serialVersionUID = 1L;
+
+	public ExcepcionFlujo(String mensaje) {
+		super(mensaje);
+	}
+
 }

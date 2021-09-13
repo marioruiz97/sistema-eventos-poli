@@ -1,7 +1,7 @@
 package edu.politecnicojic.eventos.aplicacion.manejador;
 
 import edu.politecnicojic.eventos.aplicacion.fabrica.FabricaPais;
-import edu.politecnicojic.eventos.dominio.modelo.Pais;
+import edu.politecnicojic.eventos.dominio.modeloaborrar.Pais;
 import edu.politecnicojic.eventos.dominio.repositorio.RepositorioPais;
 import edu.politecnicojic.eventos.infraestructura.persistencia.dto.PaisDto;
 import org.springframework.beans.factory.annotation.Autowired;

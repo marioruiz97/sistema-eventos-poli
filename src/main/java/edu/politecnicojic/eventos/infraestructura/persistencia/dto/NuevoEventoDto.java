@@ -1,17 +1,22 @@
 package edu.politecnicojic.eventos.infraestructura.persistencia.dto;
 
-import edu.politecnicojic.eventos.dominio.modelo.Categoria;
+import edu.politecnicojic.eventos.dominio.modelo.evento.Categoria;
+import edu.politecnicojic.eventos.dominio.modelo.evento.Organizador;
+import edu.politecnicojic.eventos.dominio.modelo.lugar.Lugar;
+import edu.politecnicojic.eventos.dominio.modelo.usuario.Facilitador;
 import lombok.Data;
 
 import javax.validation.Valid;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
 public class NuevoEventoDto {
+
+    String idEvento;
 
     @NotEmpty
     String titulo;
@@ -23,12 +28,14 @@ public class NuevoEventoDto {
     List<@Valid Categoria> categorias;
 
     @NotNull @FutureOrPresent
-    LocalDateTime fechaInicio;
+    LocalDate fecha;
 
-    @NotNull @FutureOrPresent
-    LocalDateTime fechaFin;
+    @NotNull @Valid
+    Lugar lugar;
 
-    //@NotNull @Valid TODO: agregar lógica de lugares
-    //Lugar lugar;
+    @NotEmpty
+    List<Facilitador> facilitadores;
 
+    @NotEmpty
+    List<Organizador> organizadores;
 }

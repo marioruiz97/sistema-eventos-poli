@@ -19,15 +19,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/pais")
 public class ComandoControladorPais extends ControladorBase {
 
-    @Autowired
-    private ManejadorPais manejadorPais;
+    private final ManejadorPais manejadorPais;
 
+    @Autowired
+    public ComandoControladorPais(ManejadorPais manejadorPais) {
+        this.manejadorPais = manejadorPais;
+    }
 
     @PostMapping
     public ResponseEntity<RespuestaApi> crearPais(@Validated @RequestBody PaisDto paisDto, BindingResult result) {
         if (result.hasErrors()) return objetoInvalido(result);
         manejadorPais.crear(paisDto);
-        RespuestaApi respuestaApi = crearRespuestaExitosa("Se ha creado el país con éxito");
+        RespuestaApi<?> respuestaApi = crearRespuestaExitosa("Se ha creado el país con éxito");
         return new ResponseEntity<>(respuestaApi, HttpStatus.CREATED);
     }
 }

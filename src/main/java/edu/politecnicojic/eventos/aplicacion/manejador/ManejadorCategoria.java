@@ -1,6 +1,6 @@
 package edu.politecnicojic.eventos.aplicacion.manejador;
 
-import edu.politecnicojic.eventos.dominio.modelo.Categoria;
+import edu.politecnicojic.eventos.dominio.modelo.evento.Categoria;
 import edu.politecnicojic.eventos.dominio.repositorio.RepositorioCategoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

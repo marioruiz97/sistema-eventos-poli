@@ -1,27 +1,37 @@
 package edu.politecnicojic.eventos.dominio.servicio;
 
-import edu.politecnicojic.eventos.dominio.modelo.Evento;
-import edu.politecnicojic.eventos.dominio.repositorio.RepositorioEvento;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import edu.politecnicojic.eventos.dominio.excepcion.ExcepcionElementoNoEncontrado;
+import edu.politecnicojic.eventos.dominio.modelo.evento.Categoria;
+import edu.politecnicojic.eventos.dominio.modelo.evento.Evento;
+import edu.politecnicojic.eventos.dominio.repositorio.RepositorioEvento;
 
 @Service
 public class ServicioConsultaEvento {
 
-    private final RepositorioEvento repositorioEvento;
+	private static final String EVENTO_NO_ENCONTRADO = "El evento que buscas no se ha encontrado";
 
-    @Autowired
-    public ServicioConsultaEvento(RepositorioEvento repositorioEvento) {
-        this.repositorioEvento = repositorioEvento;
-    }
+	private final RepositorioEvento repositorioEvento;
 
-    public List<Evento> buscarPorCategorias(List<String> categorias) {
-        return repositorioEvento.buscarPorCategorias(categorias);
-    }
+	@Autowired
+	public ServicioConsultaEvento(RepositorioEvento repositorioEvento) {
+		this.repositorioEvento = repositorioEvento;
+	}
 
-    public List<Evento> buscar() {
-        return repositorioEvento.buscar();
-    }
+	public List<Evento> buscarPorCategorias(List<Categoria> categorias) {
+		return repositorioEvento.buscarPorCategorias(categorias);
+	}
+
+	public List<Evento> buscarTodos() {
+		return repositorioEvento.buscarTodos();
+	}
+
+	public Evento buscarPorId(String idEvento) {
+		return repositorioEvento.buscarPorId(idEvento)
+				.orElseThrow(() -> new ExcepcionElementoNoEncontrado(EVENTO_NO_ENCONTRADO));
+	}
 }

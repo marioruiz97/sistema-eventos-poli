@@ -1,7 +1,7 @@
 package edu.politecnicojic.eventos.infraestructura.controlador.consulta;
 
 import edu.politecnicojic.eventos.aplicacion.manejador.ManejadorCategoria;
-import edu.politecnicojic.eventos.dominio.modelo.Categoria;
+import edu.politecnicojic.eventos.dominio.modelo.evento.Categoria;
 import edu.politecnicojic.eventos.infraestructura.configuracion.Constantes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +23,7 @@ public class ConsultaControladorCategoria {
     }
 
     @GetMapping
-    public List<Categoria> buscar() {
+    public List<Categoria> buscarDisponibles() {
         return manejadorCategoria.buscarCategoriasDisponibles();
     }
 }

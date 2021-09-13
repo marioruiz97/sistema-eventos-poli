@@ -1,6 +1,6 @@
 package edu.politecnicojic.eventos.dominio.repositorio;
 
-import edu.politecnicojic.eventos.dominio.modelo.Pais;
+import edu.politecnicojic.eventos.dominio.modeloaborrar.Pais;
 
 import java.util.List;
 

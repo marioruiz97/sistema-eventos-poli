@@ -32,7 +32,7 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = {ExcepcionFlujo.class, ExcepcionElementoNoEncontrado.class})
     protected ResponseEntity<Object> manejarExcepcionesFlujo(RuntimeException ex, WebRequest request) {
-        final String mensaje = "Se ha presentado un error de flujo, valide la acciÃ³n realizada";
+        final String mensaje = "Se ha presentado un error de flujo, valide la acción realizada";
         RespuestaApi<String> respuestaError = new RespuestaApi<>(mensaje, ex.getMessage());
         HttpStatus status = (ex instanceof ExcepcionFlujo) ? HttpStatus.BAD_REQUEST : HttpStatus.NOT_FOUND;
         return handleExceptionInternal(ex, respuestaError, new HttpHeaders(), status, request);

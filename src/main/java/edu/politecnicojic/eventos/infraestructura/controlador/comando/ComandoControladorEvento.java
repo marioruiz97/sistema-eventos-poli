@@ -28,15 +28,17 @@ public class ComandoControladorEvento extends ControladorBase {
         this.manejadorEvento = manejadorEvento;
     }
 
-    @PostMapping
+    @SuppressWarnings("rawtypes")
+	@PostMapping
     public ResponseEntity<RespuestaApi> crear(@RequestBody @Valid NuevoEventoDto nuevoEventoDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return objetoInvalido(bindingResult);
         Evento nuevoEvento = manejadorEvento.crear(nuevoEventoDto);
-        RespuestaApi<?> respuesta = crearRespuestaExitosa("Se ha creado Evento con Ã©xito", nuevoEvento);
+        RespuestaApi<?> respuesta = crearRespuestaExitosa("Se ha creado Evento con éxito", nuevoEvento);
         return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{idEvento}")
+    @SuppressWarnings("rawtypes")
+	@PutMapping("/{idEvento}")
     public ResponseEntity<RespuestaApi> agregarComentario(
             @PathVariable String idEvento,
             @RequestBody @Valid ComentarioDto comentarioDto,
@@ -44,7 +46,7 @@ public class ComandoControladorEvento extends ControladorBase {
 
         if (bindingResult.hasErrors()) return objetoInvalido(bindingResult);
         manejadorEvento.agregarComentario(idEvento, comentarioDto);
-        RespuestaApi<?> respuesta = crearRespuestaExitosa("Se ha agregado comentario con Ã©xito");
+        RespuestaApi<?> respuesta = crearRespuestaExitosa("Se ha agregado comentario con éxito");
         return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
 

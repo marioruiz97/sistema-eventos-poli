@@ -6,7 +6,7 @@ import edu.politecnicojic.eventos.dominio.modelo.usuario.Usuario;
 
 public interface RepositorioUsuarioPolitecnico extends Repositorio {
 
-	Usuario crearMiembroPoli(Usuario usuario);
+	boolean existeEnSistemaRelacional(String identificacion);
 
 	@Override
 	Optional<Usuario> buscarPorIdentificacion(String identificacion);

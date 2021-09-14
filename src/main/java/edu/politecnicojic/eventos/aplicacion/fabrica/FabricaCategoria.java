@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class FabricaCategoria {
 
-    public Categoria crearCategoria(String nombre) {
-        return new Categoria(nombre);
-    }
+	public Categoria crearCategoria(String nombre) {
+		return new Categoria(nombre);
+	}
 }

@@ -27,4 +27,10 @@ public class EntidadPrograma implements Serializable {
     @JoinColumn(name = "codigo_area", nullable = false)
     private EntidadArea area;
 
+    
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }

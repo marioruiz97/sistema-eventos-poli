@@ -27,4 +27,10 @@ public class EntidadCiudad implements Serializable {
     @JoinColumn(name = "cod_dpto", nullable = false)
     private EntidadDepartamento entidadDepartamento;
 
+    
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }

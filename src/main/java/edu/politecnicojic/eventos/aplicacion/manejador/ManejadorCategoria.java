@@ -10,15 +10,14 @@ import java.util.List;
 @Service
 public class ManejadorCategoria {
 
-    private final RepositorioCategoria repositorioCategoria;
+	private final RepositorioCategoria repositorioCategoria;
 
-    @Autowired
-    public ManejadorCategoria(RepositorioCategoria repositorioCategoria) {
-        this.repositorioCategoria = repositorioCategoria;
-    }
+	@Autowired
+	public ManejadorCategoria(RepositorioCategoria repositorioCategoria) {
+		this.repositorioCategoria = repositorioCategoria;
+	}
 
-    public List<Categoria> buscarCategoriasDisponibles() {
-        return repositorioCategoria.buscarCategoriasDisponibles();
-    }
+	public List<Categoria> buscarCategoriasDisponibles() {
+		return repositorioCategoria.buscarCategoriasDisponibles();
+	}
 }
-

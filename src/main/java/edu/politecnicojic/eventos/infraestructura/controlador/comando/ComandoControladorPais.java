@@ -26,11 +26,12 @@ public class ComandoControladorPais extends ControladorBase {
         this.manejadorPais = manejadorPais;
     }
 
-    @PostMapping
+    @SuppressWarnings("rawtypes")
+	@PostMapping
     public ResponseEntity<RespuestaApi> crearPais(@Validated @RequestBody PaisDto paisDto, BindingResult result) {
         if (result.hasErrors()) return objetoInvalido(result);
         manejadorPais.crear(paisDto);
-        RespuestaApi<?> respuestaApi = crearRespuestaExitosa("Se ha creado el paÃ­s con Ã©xito");
+        RespuestaApi<?> respuestaApi = crearRespuestaExitosa("Se ha creado el país con éxito");
         return new ResponseEntity<>(respuestaApi, HttpStatus.CREATED);
     }
 }

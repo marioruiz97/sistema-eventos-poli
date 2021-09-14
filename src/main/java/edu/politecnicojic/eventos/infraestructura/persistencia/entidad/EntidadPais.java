@@ -26,4 +26,10 @@ public class EntidadPais implements Serializable {
     @NotEmpty
     private String nombre;
 
+    
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }

@@ -36,4 +36,10 @@ public class EntidadFacultad implements Serializable {
     @JoinColumn(name = "id_decano")
     private EntidadEmpleado decano;
 
+    
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }

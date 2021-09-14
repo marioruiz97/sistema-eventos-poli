@@ -57,6 +57,10 @@ public class ServicioUsuario {
 		}).collect(Collectors.toList());
 	}
 
+	public boolean existeEnSistemaRelacional(String identificacion) {
+		return repositorioUsuarioPoli.existeEnSistemaRelacional(identificacion);
+	}
+
 	public Usuario buscarUsuario(String identificacion) {
 		return buscarUsuarioPorIdentificacion(repositorioUsuario, identificacion);
 	}

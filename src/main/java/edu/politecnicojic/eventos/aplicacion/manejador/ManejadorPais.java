@@ -10,18 +10,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class ManejadorPais {
 
-    FabricaPais fabricaPais;
+	FabricaPais fabricaPais;
 
-    RepositorioPais repositorioPais;
+	RepositorioPais repositorioPais;
 
-    @Autowired
-    public ManejadorPais(FabricaPais fabricaPais, RepositorioPais repositorioPais) {
-        this.fabricaPais = fabricaPais;
-        this.repositorioPais = repositorioPais;
-    }
+	@Autowired
+	public ManejadorPais(FabricaPais fabricaPais, RepositorioPais repositorioPais) {
+		this.fabricaPais = fabricaPais;
+		this.repositorioPais = repositorioPais;
+	}
 
-    public void crear(PaisDto paisDto) {
-        Pais pais = fabricaPais.convertirDtoADominio(paisDto);
-        repositorioPais.crearOEditar(pais);
-    }
+	public void crear(PaisDto paisDto) {
+		Pais pais = fabricaPais.convertirDtoADominio(paisDto);
+		repositorioPais.crearOEditar(pais);
+	}
 }

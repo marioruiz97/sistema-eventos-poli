@@ -28,4 +28,10 @@ public class EntidadDepartamento implements Serializable {
     @JoinColumn(nullable = false, name = "cod_pais")
     private EntidadPais entidadPais;
 
+    
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }

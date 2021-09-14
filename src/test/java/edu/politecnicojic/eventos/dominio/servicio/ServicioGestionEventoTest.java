@@ -28,7 +28,7 @@ import edu.politecnicojic.eventos.dominio.repositorio.RepositorioLugar;
 class ServicioGestionEventoTest {
 
 	private static final String CAMPOS_OBLIGATORIOS = "Faltan campos obligatorios, por favor verifica los datos ingresados";
-	private static final String LUGAR_NO_ENCONTRADO = "No se encontrï¿½ el lugar al que se asociï¿½ el evento, verifica la informaciï¿½n";
+	private static final String LUGAR_NO_ENCONTRADO = "No se encontró el lugar al que se asoció el evento, verifica la información";
 	private static final String FECHA_INVALIDA = "La fecha ingresada debe estar en el futuro";
 	private static final String EVENTO_NO_ENCONTRADO = "No se ha encontrado el evento que buscas";
 

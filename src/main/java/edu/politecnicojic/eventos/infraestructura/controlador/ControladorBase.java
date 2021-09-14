@@ -14,14 +14,15 @@ import java.util.stream.Collectors;
 public class ControladorBase {
 
     /**
-     * M√©todo usado cuando hay errores en el binding result, retorna un bad_request
+     * MÈtodo usado cuando hay errores en el binding result, retorna un bad_request
      * con los errores existentes
      *
      * @param result resultado de la validaci√≥n hecha por el controlador
      * @return retorna una respuesta al cliente de tipo BAD_REQUEST
      */
-    public ResponseEntity<RespuestaApi> objetoInvalido(BindingResult result) {
-        String mensaje = "EL objeto ingresado no cumple las validaciones m√≠nimas";
+    @SuppressWarnings("rawtypes")
+	public ResponseEntity<RespuestaApi> objetoInvalido(BindingResult result) {
+        String mensaje = "El objeto ingresado no cumple las validaciones mÌnimas";
         List<String> errores = result.getFieldErrors().stream().map(err -> {
             String field = StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(err.getField()), ' ') + ": ";
             return field + err.getDefaultMessage();
@@ -29,7 +30,8 @@ public class ControladorBase {
         return new ResponseEntity<>(new RespuestaApi<>(mensaje, errores), HttpStatus.BAD_REQUEST);
     }
 
-    public RespuestaApi crearRespuestaExitosa(String mensaje) {
+    @SuppressWarnings("rawtypes")
+	public RespuestaApi crearRespuestaExitosa(String mensaje) {
         return new RespuestaApi<>(mensaje);
     }
 

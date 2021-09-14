@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class FabricaPais {
 
-    public Pais convertirDtoADominio(PaisDto paisDto){
-        return new Pais(paisDto.getCodigoPais(), paisDto.getNombre());
-    }
+	public Pais convertirDtoADominio(PaisDto paisDto) {
+		return new Pais(paisDto.getCodigoPais(), paisDto.getNombre());
+	}
 }

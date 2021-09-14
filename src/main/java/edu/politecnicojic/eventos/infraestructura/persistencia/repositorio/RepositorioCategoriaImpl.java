@@ -1,13 +1,14 @@
 package edu.politecnicojic.eventos.infraestructura.persistencia.repositorio;
 
-import edu.politecnicojic.eventos.dominio.modelo.evento.Categoria;
-import edu.politecnicojic.eventos.dominio.modelo.evento.Evento;
-import edu.politecnicojic.eventos.dominio.repositorio.RepositorioCategoria;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import edu.politecnicojic.eventos.dominio.modelo.evento.Categoria;
+import edu.politecnicojic.eventos.dominio.repositorio.RepositorioCategoria;
+import edu.politecnicojic.eventos.infraestructura.persistencia.documento.DocumentoEvento;
 
 @Repository
 public class RepositorioCategoriaImpl implements RepositorioCategoria {
@@ -21,6 +22,6 @@ public class RepositorioCategoriaImpl implements RepositorioCategoria {
 
     @Override
     public List<Categoria> buscarCategoriasDisponibles() {
-        return mongoTemplate.query(Evento.class).distinct("categorias").as(Categoria.class).all();
+        return mongoTemplate.query(DocumentoEvento.class).distinct("categorias").as(Categoria.class).all();
     }
 }

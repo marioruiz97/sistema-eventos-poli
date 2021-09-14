@@ -14,7 +14,7 @@ public enum TipoRelacion {
 	ADMINISTRATIVO("Administrativo"), 
 	DIRECTIVO("Directivo"), 
 	OTRO("Otro"),
-	SIN_RELACION("Externo al poli (sin relaciï¿½n)");
+	SIN_RELACION("Externo al poli (sin relación)");
 
 	@Getter
 	private final String nombreTipoRelacion;

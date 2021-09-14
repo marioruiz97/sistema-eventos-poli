@@ -48,10 +48,8 @@ class ServicioUsuarioTest {
 
 		// arrange
 		String contrasena = "superclave123";
-		Usuario usuario = new UsuarioTestDataBuilder()
-				.conContrasena(contrasena)
-				.conTipoRelacion(TipoRelacion.SIN_RELACION)
-				.build();
+		Usuario usuario = new UsuarioTestDataBuilder().conContrasena(contrasena)
+				.conTipoRelacion(TipoRelacion.SIN_RELACION).build();
 		Mockito.when(repositorioUsuario.crear(usuario)).thenReturn(usuario);
 
 		// act
@@ -66,10 +64,7 @@ class ServicioUsuarioTest {
 	@Test
 	void crearUsuarioFallaPorCamposObligatorios() {
 		// arrange
-		Usuario usuario = new UsuarioTestDataBuilder()
-				.conContrasena("")
-				.conTipoRelacion(null)
-				.build();
+		Usuario usuario = new UsuarioTestDataBuilder().conContrasena("").conTipoRelacion(null).build();
 
 		// act
 		ExcepcionFlujo excepcion = Assertions.assertThrows(ExcepcionFlujo.class, () -> servicioUsuario.crear(usuario));
@@ -82,18 +77,12 @@ class ServicioUsuarioTest {
 	void crearMiembroPoliEsExitoso() {
 		// arrange
 		String identificacion = "71665023";
-		
-		Usuario usuario = new UsuarioTestDataBuilder()
-				.conNombres("")
-				.conEmail("")
-				.conIdentificacion(identificacion)
-				.conTipoRelacion(TipoRelacion.ADMINISTRATIVO)
-				.build();
 
-		Usuario result = new UsuarioTestDataBuilder()
-				.conIdentificacion(identificacion)
-				.conTipoRelacion(TipoRelacion.ADMINISTRATIVO)
-				.build();
+		Usuario usuario = new UsuarioTestDataBuilder().conNombres("").conEmail("").conIdentificacion(identificacion)
+				.conTipoRelacion(TipoRelacion.ADMINISTRATIVO).build();
+
+		Usuario result = new UsuarioTestDataBuilder().conIdentificacion(identificacion)
+				.conTipoRelacion(TipoRelacion.ADMINISTRATIVO).build();
 
 		Mockito.when(repositorioUsuarioPolitecnico.buscarPorIdentificacion(identificacion))
 				.thenReturn(Optional.of(result));
@@ -112,12 +101,20 @@ class ServicioUsuarioTest {
 	}
 
 	@Test
+	void existeEnBdFunciona() {
+		// arrange
+		String identificacion = "1";
+		Mockito.when(repositorioUsuarioPolitecnico.existeEnSistemaRelacional(identificacion)).thenReturn(true);
+
+		// act - assert
+		assertThat(servicioUsuario.existeEnSistemaRelacional(identificacion)).isTrue();
+	}
+
+	@Test
 	void buscarUsuarioConIdentificacionEsExitoso() {
 		// arrange
 		String identificacion = "71665023";
-		Usuario usuario = new UsuarioTestDataBuilder()
-				.conIdentificacion(identificacion)
-				.build();
+		Usuario usuario = new UsuarioTestDataBuilder().conIdentificacion(identificacion).build();
 		Mockito.when(repositorioUsuario.buscarPorIdentificacion(identificacion)).thenReturn(Optional.of(usuario));
 
 		// act

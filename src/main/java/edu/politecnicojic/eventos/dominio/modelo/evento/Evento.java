@@ -1,5 +1,8 @@
 package edu.politecnicojic.eventos.dominio.modelo.evento;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.politecnicojic.eventos.dominio.modelo.ValidadorArgumento;
 import edu.politecnicojic.eventos.dominio.modelo.usuario.Asistente;
 import edu.politecnicojic.eventos.dominio.modelo.usuario.Conferencista;
@@ -8,14 +11,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Evento {
-
+	
     private String idEvento;
 
     private InformacionEvento informacionEvento;

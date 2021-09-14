@@ -18,7 +18,7 @@ import edu.politecnicojic.eventos.dominio.repositorio.RepositorioLugar;
 public class ServicioGestionEvento {
 
     private static final String EVENTO_NO_ENCONTRADO = "No se ha encontrado el evento que buscas";
-    private static final String LUGAR_NO_ENCONTRADO = "No se encontrï¿½ el lugar al que se asociï¿½ el evento, verifica la informaciï¿½n";
+    private static final String LUGAR_NO_ENCONTRADO = "No se encontró el lugar al que se asoció el evento, verifica la información";
 
     private final RepositorioEvento repositorioEvento;
     private final RepositorioLugar repositorioLugar;

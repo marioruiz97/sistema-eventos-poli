@@ -31,4 +31,10 @@ public class EntidadArea implements Serializable {
     @JoinColumn(name = "id_coordinador", unique = true)
     private EntidadEmpleado coordinador;
 
+    
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }

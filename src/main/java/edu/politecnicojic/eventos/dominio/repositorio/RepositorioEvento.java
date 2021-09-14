@@ -11,23 +11,25 @@ import java.util.Optional;
 
 public interface RepositorioEvento {
 
-    Evento crear(Evento evento);
+	Evento crear(Evento evento);
 
-    List<Evento> buscarTodos();
+	List<Evento> buscarTodos();
 
-    //List<Evento> buscarPorCategorias(List<Categoria> categorias);
+	List<Evento> buscarPorCategorias(List<Categoria> categorias);
 
-    Optional<Evento> buscarPorId(String idEvento);
+	Optional<Evento> buscarPorId(String idEvento);
 
-    void actualizarEvento(Evento evento);
+	void actualizarEvento(Evento evento);
 
-    /* TODO: descomentar cuando se agregue la lÃ³gica de cada mÃ©todo
-    void agregarAsistentes(String idEvento, List<Asistente> asistentes)
-
-    void agregarConferencistas(String idEvento, List<Conferencista> conferencistas);
-
-    void agregarComentario(String idEvento, Comentario comentario);
-
-    void eliminarPorId(String idEvento);*/
+	/*
+	 * TODO: descomentar cuando se agregue la lógica de cada método 
+	 * void agregarAsistentes(String idEvento, List<Asistente> asistentes)
+	 * 
+	 * void agregarConferencistas(String idEvento, List<Conferencista> conferencistas);
+	 * 
+	 * void agregarComentario(String idEvento, Comentario comentario);
+	 * 
+	 * void eliminarPorId(String idEvento);
+	 */
 
 }

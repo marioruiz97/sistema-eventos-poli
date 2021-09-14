@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Sede {
 
-	//private String codigoSede;
+	// TODO: BORRAR SI NO SE NECESITA private String codigoSede;
 
 	private String nombre;
 	

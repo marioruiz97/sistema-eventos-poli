@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,11 +14,14 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import edu.politecnicojic.eventos.dominio.databuilder.LugarTestDataBuilder;
+import edu.politecnicojic.eventos.dominio.excepcion.ExcepcionElementoNoEncontrado;
 import edu.politecnicojic.eventos.dominio.excepcion.ExcepcionFlujo;
 import edu.politecnicojic.eventos.dominio.modelo.lugar.Lugar;
 import edu.politecnicojic.eventos.dominio.repositorio.RepositorioLugar;
 
 class ServicioLugarTest {
+
+	private static final String LUGAR_NO_ENCONTRADO = "No se encontró el lugar al que se asoció el evento, verifica la información";
 
 	private static ServicioLugar servicioLugar;
 	private static RepositorioLugar repositorioLugar;
@@ -51,6 +55,31 @@ class ServicioLugarTest {
 		// act - assert
 		assertThatNoException().isThrownBy(() -> servicioLugar.buscarTodos());
 
+	}
+
+	@Test
+	void buscarPorNombreYDireccionFunciona() {
+		// arrange
+		String nombre = "Prueba";
+		String direccion = "calle falsa 123";
+		Lugar lugar = new LugarTestDataBuilder().conNombre(nombre).conDireccion(direccion).build();
+		Mockito.when(repositorioLugar.buscarPorNombreYDireccion(nombre, direccion)).thenReturn(Optional.of(lugar));
+
+		// act - assert
+		assertThatNoException().isThrownBy(() -> servicioLugar.buscarPorNombreYDireccion(nombre, direccion));
+	}
+
+	@Test
+	void buscarPorNombreYDireccionFalla() {
+		// arrange
+		String nombre = "Prueba";
+		String direccion = "calle falsa 123";
+		Mockito.when(repositorioLugar.buscarPorNombreYDireccion(nombre, direccion)).thenReturn(Optional.empty());
+
+		// act - assert
+		ExcepcionElementoNoEncontrado excepcion = Assertions.assertThrows(ExcepcionElementoNoEncontrado.class,
+				() -> servicioLugar.buscarPorNombreYDireccion(nombre, direccion));
+		assertThat(excepcion.getMessage()).isEqualTo(LUGAR_NO_ENCONTRADO);
 	}
 
 	@Test

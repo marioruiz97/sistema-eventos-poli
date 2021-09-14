@@ -10,9 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ManejadorPais {
 
-	FabricaPais fabricaPais;
-
-	RepositorioPais repositorioPais;
+	private final FabricaPais fabricaPais;
+	private final RepositorioPais repositorioPais;
 
 	@Autowired
 	public ManejadorPais(FabricaPais fabricaPais, RepositorioPais repositorioPais) {

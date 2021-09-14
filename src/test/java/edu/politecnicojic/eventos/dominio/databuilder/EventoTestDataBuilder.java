@@ -4,14 +4,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.politecnicojic.eventos.dominio.modelo.evento.Comentario;
 import edu.politecnicojic.eventos.dominio.modelo.evento.Categoria;
+import edu.politecnicojic.eventos.dominio.modelo.evento.Comentario;
 import edu.politecnicojic.eventos.dominio.modelo.evento.Evento;
 import edu.politecnicojic.eventos.dominio.modelo.evento.Facultad;
 import edu.politecnicojic.eventos.dominio.modelo.evento.InformacionEvento;
 import edu.politecnicojic.eventos.dominio.modelo.evento.Organizador;
 import edu.politecnicojic.eventos.dominio.modelo.evento.Programa;
-import edu.politecnicojic.eventos.dominio.modelo.evento.TipoOrganizador;
 import edu.politecnicojic.eventos.dominio.modelo.lugar.Lugar;
 import edu.politecnicojic.eventos.dominio.modelo.usuario.Facilitador;
 import edu.politecnicojic.eventos.dominio.modelo.usuario.Usuario;
@@ -82,8 +81,8 @@ public class EventoTestDataBuilder {
 
 	private List<Organizador> buildOrganizadores() {
 		List<Organizador> organizadores = new ArrayList<>();
-		organizadores.add(new Facultad(TipoOrganizador.FACULTAD, INGENIERIA, UBICACION_FACULTAD, TELEFONO_FACULTAD));
-		organizadores.add(new Programa(TipoOrganizador.PROGRAMA, INGENIERIA_INFORMATICA, CODIGO_AREA));
+		organizadores.add(new Facultad(1, INGENIERIA, UBICACION_FACULTAD, TELEFONO_FACULTAD));
+		organizadores.add(new Programa(2, INGENIERIA_INFORMATICA, CODIGO_AREA));
 		return organizadores;
 	}
 

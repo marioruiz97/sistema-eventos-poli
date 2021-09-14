@@ -12,6 +12,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import edu.politecnicojic.eventos.dominio.databuilder.EventoTestDataBuilder;
 import edu.politecnicojic.eventos.dominio.excepcion.ExcepcionElementoNoEncontrado;
 import edu.politecnicojic.eventos.dominio.modelo.evento.Categoria;
 import edu.politecnicojic.eventos.dominio.modelo.evento.Evento;
@@ -26,6 +27,17 @@ class ServicioConsultaEventoTest {
 	static void setUp() {
 		repositorioEvento = mock(RepositorioEvento.class);
 		servicioEvento = new ServicioConsultaEvento(repositorioEvento);
+	}
+
+	@Test
+	void buscarPorIdFunciona() {
+		// assert
+		Evento evento = new EventoTestDataBuilder().buildEvento();
+		String idEvento = evento.getIdEvento();
+		Mockito.when(repositorioEvento.buscarPorId(idEvento)).thenReturn(Optional.of(evento));
+
+		// act - assert
+		assertThatNoException().isThrownBy(() -> servicioEvento.buscarPorId(idEvento));
 	}
 
 	@Test

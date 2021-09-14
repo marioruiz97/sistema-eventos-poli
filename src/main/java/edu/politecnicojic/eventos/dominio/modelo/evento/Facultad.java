@@ -4,7 +4,8 @@ import lombok.Getter;
 
 public class Facultad extends Organizador {
 
-	// private Integer codigo;
+	@Getter
+	private Integer codigo;
 
 	@Getter
 	private String nombre;
@@ -15,8 +16,9 @@ public class Facultad extends Organizador {
 	@Getter
 	private String nroTelefono;
 
-	public Facultad(TipoOrganizador tipoOrganizador, String nombre, String ubicacion, String nroTelefono) {
-		super(tipoOrganizador);
+	public Facultad(Integer codigo, String nombre, String ubicacion, String nroTelefono) {
+		super(TipoOrganizador.FACULTAD);
+		this.codigo = codigo;
 		this.nombre = nombre;
 		this.ubicacion = ubicacion;
 		this.nroTelefono = nroTelefono;

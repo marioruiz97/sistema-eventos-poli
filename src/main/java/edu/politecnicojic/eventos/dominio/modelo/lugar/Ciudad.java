@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Ciudad {
 
-	// private Integer codigo;
+	// TODO: BORRAR SI NO SE NECESITA private Integer codigo;
 
 	private String nombre;
 

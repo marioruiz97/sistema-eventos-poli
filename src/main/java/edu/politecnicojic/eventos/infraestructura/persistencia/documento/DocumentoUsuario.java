@@ -2,6 +2,7 @@ package edu.politecnicojic.eventos.infraestructura.persistencia.documento;
 
 import javax.persistence.Id;
 
+import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import edu.politecnicojic.eventos.dominio.modelo.usuario.TipoRelacion;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
+@CompoundIndex(unique = true, def = "{ 'nombreUsuario': 1 }")
 @Document(collection = "usuarios")
 public class DocumentoUsuario extends Usuario {
 

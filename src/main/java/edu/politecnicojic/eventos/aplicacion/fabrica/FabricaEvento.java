@@ -6,6 +6,7 @@ import edu.politecnicojic.eventos.dominio.modelo.evento.InformacionEvento;
 import edu.politecnicojic.eventos.dominio.modelo.evento.Organizador;
 import edu.politecnicojic.eventos.dominio.modelo.lugar.Lugar;
 import edu.politecnicojic.eventos.dominio.modelo.usuario.Facilitador;
+import edu.politecnicojic.eventos.dominio.modelo.usuario.Usuario;
 import edu.politecnicojic.eventos.infraestructura.persistencia.dto.ComentarioDto;
 import edu.politecnicojic.eventos.infraestructura.persistencia.dto.NuevoEventoDto;
 
@@ -27,7 +28,7 @@ public class FabricaEvento {
 		return new Evento(eventoDto.getIdEvento(), informacionEvento, facilitadores, organizadores);
 	}
 
-	public Comentario crearComentario(ComentarioDto comentarioDto) {
-		return new Comentario(comentarioDto.getMensaje(), comentarioDto.getUsuario());
+	public Comentario crearComentario(ComentarioDto comentarioDto, Usuario usuario) {
+		return new Comentario(comentarioDto.getMensaje(), usuario);
 	}
 }

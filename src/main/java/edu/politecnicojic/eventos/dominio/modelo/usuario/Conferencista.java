@@ -1,5 +1,8 @@
 package edu.politecnicojic.eventos.dominio.modelo.usuario;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class Conferencista extends Usuario {
 
 	public Conferencista(Usuario usuario) {

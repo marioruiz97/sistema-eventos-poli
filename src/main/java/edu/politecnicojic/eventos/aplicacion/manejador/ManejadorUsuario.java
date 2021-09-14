@@ -19,7 +19,6 @@ public class ManejadorUsuario {
 
 	@Autowired
 	public ManejadorUsuario(ServicioUsuario servicioUsuario, FabricaUsuario fabricaUsuario) {
-		super();
 		this.servicioUsuario = servicioUsuario;
 		this.fabricaUsuario = fabricaUsuario;
 	}

@@ -24,8 +24,7 @@ public class ManejadorOrganizador {
 
 	@Autowired
 	public ManejadorOrganizador(RepositorioOrganizador<Facultad> repositorioFacultad,
-			RepositorioOrganizador<Programa> repositorioPrograma) {
-		super();
+			RepositorioOrganizador<Programa> repositorioPrograma) {		
 		this.repositorioFacultad = repositorioFacultad;
 		this.repositorioPrograma = repositorioPrograma;
 	}

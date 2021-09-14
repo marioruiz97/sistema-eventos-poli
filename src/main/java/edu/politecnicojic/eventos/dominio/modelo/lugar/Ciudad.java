@@ -13,11 +13,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Ciudad {
 
-	// TODO: BORRAR SI NO SE NECESITA private Integer codigo;
+	private Integer codigo;
 
 	private String nombre;
 
 	private String departamento;
+
+	public Ciudad(Integer codigo) {
+		this.codigo = codigo;
+	}
 
 	public void validarCampos() {
 		List<String> campos = new ArrayList<>();

@@ -10,14 +10,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Sede {
 
-	// TODO: BORRAR SI NO SE NECESITA private String codigoSede;
+	private Integer codigoSede;
 
 	private String nombre;
-	
+
 	private Ciudad ciudad;
+
+	public Sede(Integer codigoSede) {
+		this.codigoSede = codigoSede;
+	}
 
 	public void validarCampos() {
 		ValidadorArgumento.validarCampo(nombre);
+		ValidadorArgumento.validarNulo(ciudad);
 		ciudad.validarCampos();
 	}
+
 }

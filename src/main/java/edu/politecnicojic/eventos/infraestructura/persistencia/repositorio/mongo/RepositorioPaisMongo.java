@@ -1,4 +1,4 @@
-package edu.politecnicojic.eventos.infraestructura.persistencia.repositorio;
+package edu.politecnicojic.eventos.infraestructura.persistencia.repositorio.mongo;
 
 import edu.politecnicojic.eventos.dominio.modeloaborrar.Pais;
 import edu.politecnicojic.eventos.dominio.repositorio.RepositorioPais;

@@ -1,4 +1,4 @@
-package edu.politecnicojic.eventos.infraestructura.persistencia.repositorio;
+package edu.politecnicojic.eventos.infraestructura.persistencia.repositorio.mongo;
 
 import java.util.List;
 

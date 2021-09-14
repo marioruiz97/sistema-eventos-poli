@@ -16,20 +16,30 @@ import org.mockito.Mockito;
 import edu.politecnicojic.eventos.dominio.databuilder.LugarTestDataBuilder;
 import edu.politecnicojic.eventos.dominio.excepcion.ExcepcionElementoNoEncontrado;
 import edu.politecnicojic.eventos.dominio.excepcion.ExcepcionFlujo;
+import edu.politecnicojic.eventos.dominio.modelo.lugar.Ciudad;
 import edu.politecnicojic.eventos.dominio.modelo.lugar.Lugar;
+import edu.politecnicojic.eventos.dominio.modelo.lugar.Sede;
+import edu.politecnicojic.eventos.dominio.repositorio.RepositorioCiudad;
 import edu.politecnicojic.eventos.dominio.repositorio.RepositorioLugar;
+import edu.politecnicojic.eventos.dominio.repositorio.RepositorioSede;
 
 class ServicioLugarTest {
 
 	private static final String LUGAR_NO_ENCONTRADO = "No se encontró el lugar al que se asoció el evento, verifica la información";
+	private static final String CIUDAD_NO_ENCONTRADO = "No se ha encontrado la Ciudad con código 1";
+	private static final String SEDE_NO_ENCONTRADO = "No se ha encontrado la Sede con código 1";
 
 	private static ServicioLugar servicioLugar;
 	private static RepositorioLugar repositorioLugar;
+	private static RepositorioSede repositorioSede;
+	private static RepositorioCiudad repositorioCiudad;
 
 	@BeforeAll
 	static void setUp() {
 		repositorioLugar = mock(RepositorioLugar.class);
-		servicioLugar = new ServicioLugar(repositorioLugar);
+		repositorioSede = mock(RepositorioSede.class);
+		repositorioCiudad = mock(RepositorioCiudad.class);
+		servicioLugar = new ServicioLugar(repositorioLugar, repositorioCiudad, repositorioSede);
 	}
 
 	@Test
@@ -80,6 +90,48 @@ class ServicioLugarTest {
 		ExcepcionElementoNoEncontrado excepcion = Assertions.assertThrows(ExcepcionElementoNoEncontrado.class,
 				() -> servicioLugar.buscarPorNombreYDireccion(nombre, direccion));
 		assertThat(excepcion.getMessage()).isEqualTo(LUGAR_NO_ENCONTRADO);
+	}
+
+	@Test
+	void buscarCiudadFunciona() {
+		// arrange
+		Ciudad ciudad = new LugarTestDataBuilder().build().getCiudad();
+		Mockito.when(repositorioCiudad.buscarPorCodigo(1)).thenReturn(Optional.of(ciudad));
+
+		// act - assert
+		assertThatNoException().isThrownBy(() -> servicioLugar.buscarCiudad(1));
+	}
+
+	@Test
+	void buscarCiudadFalla() {
+		// arrange
+		Mockito.when(repositorioCiudad.buscarPorCodigo(1)).thenReturn(Optional.empty());
+
+		// act - assert
+		ExcepcionElementoNoEncontrado excepcion = Assertions.assertThrows(ExcepcionElementoNoEncontrado.class,
+				() -> servicioLugar.buscarCiudad(1));
+		assertThat(excepcion.getMessage()).isEqualTo(CIUDAD_NO_ENCONTRADO);
+	}
+
+	@Test
+	void buscarSedeFunciona() {
+		// arrange
+		Sede sede = new LugarTestDataBuilder().build().getSede();
+		Mockito.when(repositorioSede.buscarPorCodigo(1)).thenReturn(Optional.of(sede));
+
+		// act - assert
+		assertThatNoException().isThrownBy(() -> servicioLugar.buscarSede(1));
+	}
+
+	@Test
+	void buscarSedeFalla() {
+		// arrange
+		Mockito.when(repositorioSede.buscarPorCodigo(1)).thenReturn(Optional.empty());
+
+		// act - assert
+		ExcepcionElementoNoEncontrado excepcion = Assertions.assertThrows(ExcepcionElementoNoEncontrado.class,
+				() -> servicioLugar.buscarSede(1));
+		assertThat(excepcion.getMessage()).isEqualTo(SEDE_NO_ENCONTRADO);
 	}
 
 	@Test

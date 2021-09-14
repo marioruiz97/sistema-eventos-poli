@@ -1,4 +1,4 @@
-package edu.politecnicojic.eventos.infraestructura.persistencia.repositorio;
+package edu.politecnicojic.eventos.infraestructura.persistencia.repositorio.mongo;
 
 import edu.politecnicojic.eventos.dominio.modelo.evento.Categoria;
 import edu.politecnicojic.eventos.dominio.modelo.evento.Evento;

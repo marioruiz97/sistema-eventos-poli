@@ -8,8 +8,8 @@ public class LugarTestDataBuilder {
 
 	private static final String NOMBRE = "P40";
 	private static final String DIRECCION = "Clle 10 # 43a - 120";
-	private static final Ciudad CIUDAD = new Ciudad("MEDELLIN", "ANTIOQUIA");
-	private static final Sede SEDE = new Sede("POBLADO", CIUDAD);
+	private static final Ciudad CIUDAD = new Ciudad(1, "MEDELLIN", "ANTIOQUIA");
+	private static final Sede SEDE = new Sede(2, "POBLADO", CIUDAD);
 
 	private String nombre;
 	private String direccion;

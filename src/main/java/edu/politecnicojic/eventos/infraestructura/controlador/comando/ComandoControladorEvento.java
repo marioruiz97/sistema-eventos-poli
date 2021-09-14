@@ -28,7 +28,6 @@ public class ComandoControladorEvento extends ControladorBase {
 	@Autowired
 	public ComandoControladorEvento(ManejadorCreacionEvento manejadorEvento,
 			ManejadorEdicionEvento manejadorEdicionEvento) {
-		super();
 		this.manejadorEvento = manejadorEvento;
 		this.manejadorEdicionEvento = manejadorEdicionEvento;
 	}

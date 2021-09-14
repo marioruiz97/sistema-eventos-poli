@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.politecnicojic.eventos.infraestructura.persistencia.repositorio.RepositorioEventoMongo;
-import edu.politecnicojic.eventos.infraestructura.persistencia.repositorio.RepositorioUsuarioPostgres;
+import edu.politecnicojic.eventos.infraestructura.persistencia.repositorio.mongo.RepositorioEventoMongo;
+import edu.politecnicojic.eventos.infraestructura.persistencia.repositorio.postgres.RepositorioUsuarioPostgres;
 
 @RestController
 @RequestMapping("/status")

@@ -4,6 +4,7 @@ import edu.politecnicojic.eventos.aplicacion.manejador.ManejadorCategoria;
 import edu.politecnicojic.eventos.dominio.modelo.evento.Categoria;
 import edu.politecnicojic.eventos.infraestructura.configuracion.Constantes;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping(Constantes.API_PATH + "categorias")
 public class ConsultaControladorCategoria {
 

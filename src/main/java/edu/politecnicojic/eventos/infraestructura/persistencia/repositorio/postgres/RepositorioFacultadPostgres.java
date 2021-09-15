@@ -1,6 +1,9 @@
 package edu.politecnicojic.eventos.infraestructura.persistencia.repositorio.postgres;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -21,6 +24,15 @@ public interface RepositorioFacultadPostgres
 					.of(new Facultad(codigo, entidad.getNombre(), entidad.getUbicacion(), entidad.getNumeroTelefono()));
 		else
 			return Optional.empty();
+	}
+
+	@Override
+	default List<Facultad> buscarTodos() {
+		List<EntidadFacultad> facultades = findAll();
+		return !facultades.isEmpty()
+				? facultades.stream().map(entidad -> new Facultad(entidad.getCodigo(), entidad.getNombre(),
+						entidad.getUbicacion(), entidad.getNumeroTelefono())).collect(Collectors.toList())
+				: new ArrayList<>();
 	}
 
 }

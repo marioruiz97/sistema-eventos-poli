@@ -19,6 +19,7 @@ import javax.validation.Valid;
 
 @Validated
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping(Constantes.API_PATH + "eventos")
 public class ComandoControladorEvento extends ControladorBase {
 
@@ -45,6 +46,19 @@ public class ComandoControladorEvento extends ControladorBase {
 
 	@SuppressWarnings("rawtypes")
 	@PutMapping("/{idEvento}")
+	public ResponseEntity<RespuestaApi> editar(@PathVariable("idEvento") String idEvento,
+			@RequestBody @Valid NuevoEventoDto nuevoEventoDto, BindingResult bindingResult) {
+		if (bindingResult.hasErrors())
+			return objetoInvalido(bindingResult);
+		nuevoEventoDto.setIdEvento(idEvento);
+		manejadorEvento.editar(nuevoEventoDto);
+		RespuestaApi<?> respuesta = crearRespuestaExitosa(
+				String.format("Se ha editado el Evento %s con éxito", idEvento));
+		return new ResponseEntity<>(respuesta, HttpStatus.OK);
+	}
+
+	@SuppressWarnings("rawtypes")
+	@PutMapping("/{idEvento}/comentarios")
 	public ResponseEntity<RespuestaApi> agregarComentario(@PathVariable String idEvento,
 			@RequestBody @Valid ComentarioDto comentarioDto, BindingResult bindingResult) {
 

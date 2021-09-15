@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import edu.politecnicojic.eventos.infraestructura.persistencia.dto.NuevoUsuarioD
 
 @Validated
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping(Constantes.API_PATH + "usuarios")
 public class ComandoControladorUsuario extends ControladorBase {
 

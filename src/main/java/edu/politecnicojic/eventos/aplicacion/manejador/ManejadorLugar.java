@@ -1,5 +1,7 @@
 package edu.politecnicojic.eventos.aplicacion.manejador;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,10 @@ public class ManejadorLugar {
 		Sede sede = servicioLugar.buscarSede(lugarDto.getSede());
 		Lugar lugar = fabricaLugar.convertirDtoADominio(lugarDto, ciudad, sede);
 		return servicioLugar.crear(lugar);
+	}
+
+	public List<Lugar> buscarTodos() {
+		return servicioLugar.buscarTodos();
 	}
 
 }

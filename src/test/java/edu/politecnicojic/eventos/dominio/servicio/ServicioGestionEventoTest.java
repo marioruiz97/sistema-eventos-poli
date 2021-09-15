@@ -132,10 +132,30 @@ class ServicioGestionEventoTest {
 				.thenReturn(Optional.of(lugarRetornado));
 
 		// act
-		assertThatNoException().isThrownBy(() -> servicioEvento.actualizar(evento));
+		assertThatNoException().isThrownBy(() -> servicioEvento.actualizarInformacionBasica(evento));
 
 		// assert
 		verify(repositorioLugar, atLeastOnce()).buscarPorNombreYDireccion(lugar.getNombre(), lugar.getDireccion());
+	}
+
+	@Test
+	void actualizarEventoFalla() {
+
+		// arrange
+		Lugar lugar = spy(new LugarTestDataBuilder().conSede(null).build());
+		Evento evento = spy(new EventoTestDataBuilder().conLugar(lugar).buildEvento());
+		Lugar lugarRetornado = new LugarTestDataBuilder().build();
+
+		Mockito.when(repositorioLugar.buscarPorNombreYDireccion(lugar.getNombre(), lugar.getDireccion()))
+				.thenReturn(Optional.of(lugarRetornado));
+
+		String idEvento = evento.getIdEvento();
+		Mockito.when(repositorioEvento.buscarPorId(idEvento)).thenReturn(Optional.empty());
+
+		// act - assert
+		Assertions.assertThrows(ExcepcionElementoNoEncontrado.class,
+				() -> servicioEvento.actualizarInformacionBasica(evento));
+
 	}
 
 	@Test

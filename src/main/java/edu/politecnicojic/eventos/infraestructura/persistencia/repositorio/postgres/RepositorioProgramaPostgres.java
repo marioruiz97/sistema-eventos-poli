@@ -1,6 +1,9 @@
 package edu.politecnicojic.eventos.infraestructura.persistencia.repositorio.postgres;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -20,6 +23,14 @@ public interface RepositorioProgramaPostgres
 			return Optional.of(new Programa(codigo, entidad.getNombre(), entidad.getArea().getCodigo()));
 		else
 			return Optional.empty();
+	}
+
+	@Override
+	default List<Programa> buscarTodos() {
+		List<EntidadPrograma> programas = findAll();
+		return !programas.isEmpty() ? programas.stream()
+				.map(entidad -> new Programa(entidad.getCodigo(), entidad.getNombre(), entidad.getArea().getCodigo()))
+				.collect(Collectors.toList()) : new ArrayList<>();
 	}
 
 }

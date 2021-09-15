@@ -26,11 +26,8 @@ public class ManejadorCreacionEvento {
 	private final ManejadorOrganizador manejadorOrganizador;
 
 	@Autowired
-	public ManejadorCreacionEvento(
-			FabricaEvento fabricaEvento, 
-			ServicioGestionEvento servicioGestionEvento,
-			ManejadorLugar manejadorLugar, 
-			ManejadorUsuario manejadorUsuario,
+	public ManejadorCreacionEvento(FabricaEvento fabricaEvento, ServicioGestionEvento servicioGestionEvento,
+			ManejadorLugar manejadorLugar, ManejadorUsuario manejadorUsuario,
 			ManejadorOrganizador manejadorOrganizador) {
 		this.fabricaEvento = fabricaEvento;
 		this.servicioGestionEvento = servicioGestionEvento;
@@ -45,6 +42,14 @@ public class ManejadorCreacionEvento {
 		List<Organizador> organizadores = manejadorOrganizador.buscarOrganizadores(eventoDto.getOrganizadores());
 		Evento evento = fabricaEvento.convertirNuevoDtoADominio(eventoDto, lugar, facilitadores, organizadores);
 		return servicioGestionEvento.crear(evento);
+	}
+
+	public void editar(NuevoEventoDto eventoDto) {
+		Lugar lugar = manejadorLugar.buscarPorNombreYDireccion(eventoDto.getLugar());
+		List<Facilitador> facilitadores = manejadorUsuario.buscarFacilitadores(eventoDto.getFacilitadores());
+		List<Organizador> organizadores = manejadorOrganizador.buscarOrganizadores(eventoDto.getOrganizadores());
+		Evento evento = fabricaEvento.convertirNuevoDtoADominio(eventoDto, lugar, facilitadores, organizadores);
+		servicioGestionEvento.actualizarInformacionBasica(evento);
 	}
 
 }

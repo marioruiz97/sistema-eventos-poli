@@ -22,12 +22,11 @@ public interface RepositorioEvento {
 	void actualizarEvento(Evento evento);
 
 	/*
-	 * TODO: descomentar cuando se agregue la lógica de cada método 
-	 * void agregarAsistentes(String idEvento, List<Asistente> asistentes)
+	 * TODO: descomentar cuando se agregue la lógica de cada método void
+	 * agregarAsistentes(String idEvento, List<Asistente> asistentes)
 	 * 
-	 * void agregarConferencistas(String idEvento, List<Conferencista> conferencistas);
-	 * 
-	 * void agregarComentario(String idEvento, Comentario comentario);
+	 * void agregarConferencistas(String idEvento, List<Conferencista>
+	 * conferencistas);
 	 * 
 	 * void eliminarPorId(String idEvento);
 	 */

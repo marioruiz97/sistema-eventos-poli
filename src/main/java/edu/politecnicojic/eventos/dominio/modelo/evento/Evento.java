@@ -56,4 +56,10 @@ public class Evento {
         comentarios.add(comentario);
     }
 
+	public void actualizarInformacionBasica(Evento evento) {
+		this.informacionEvento = evento.getInformacionEvento();
+		this.facilitadores = evento.getFacilitadores();
+		this.organizadores = evento.getOrganizadores();
+	}
+
 }

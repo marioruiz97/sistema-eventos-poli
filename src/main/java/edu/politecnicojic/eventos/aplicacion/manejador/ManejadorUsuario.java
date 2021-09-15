@@ -38,4 +38,8 @@ public class ManejadorUsuario {
 		return servicioUsuario.crear(fabricaUsuario.convertirDtoADominio(usuarioDto));
 	}
 
+	public List<Usuario> buscarTodos() {
+		return servicioUsuario.buscarTodos();
+	}
+
 }

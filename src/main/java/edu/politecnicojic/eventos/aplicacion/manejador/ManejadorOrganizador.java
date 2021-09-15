@@ -1,5 +1,6 @@
 package edu.politecnicojic.eventos.aplicacion.manejador;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,9 +25,16 @@ public class ManejadorOrganizador {
 
 	@Autowired
 	public ManejadorOrganizador(RepositorioOrganizador<Facultad> repositorioFacultad,
-			RepositorioOrganizador<Programa> repositorioPrograma) {		
+			RepositorioOrganizador<Programa> repositorioPrograma) {
 		this.repositorioFacultad = repositorioFacultad;
 		this.repositorioPrograma = repositorioPrograma;
+	}
+
+	public List<Organizador> buscarOrganizadores() {
+		List<Organizador> organizadores = new ArrayList<>();
+		organizadores.addAll(repositorioFacultad.buscarTodos());
+		organizadores.addAll(repositorioPrograma.buscarTodos());
+		return organizadores;
 	}
 
 	public List<Organizador> buscarOrganizadores(List<OrganizadorDto> organizadoresDto) {

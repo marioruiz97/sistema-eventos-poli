@@ -34,9 +34,12 @@ public class ServicioGestionEvento {
 		return repositorioEvento.crear(evento);
 	}
 
-	public void actualizar(Evento evento) {
+	public void actualizarInformacionBasica(Evento evento) {
 		validarEvento(evento);
-		repositorioEvento.actualizarEvento(evento);
+		Evento viejoEvento = repositorioEvento.buscarPorId(evento.getIdEvento())
+				.orElseThrow(() -> new ExcepcionElementoNoEncontrado(EVENTO_NO_ENCONTRADO));
+		viejoEvento.actualizarInformacionBasica(evento);
+		repositorioEvento.actualizarEvento(viejoEvento);
 	}
 
 	private void validarEvento(Evento evento) {

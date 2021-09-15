@@ -19,6 +19,7 @@ import edu.politecnicojic.eventos.infraestructura.configuracion.Constantes;
 import edu.politecnicojic.eventos.infraestructura.configuracion.RespuestaApi;
 import edu.politecnicojic.eventos.infraestructura.controlador.ControladorBase;
 import edu.politecnicojic.eventos.infraestructura.persistencia.dto.NuevoUsuarioDto;
+import edu.politecnicojic.eventos.infraestructura.persistencia.dto.SesionDto;
 
 @Validated
 @RestController
@@ -31,6 +32,11 @@ public class ComandoControladorUsuario extends ControladorBase {
 	@Autowired
 	public ComandoControladorUsuario(ManejadorUsuario manejadorUsuario) {
 		this.manejadorUsuario = manejadorUsuario;
+	}
+
+	@PostMapping("/login")
+	public Usuario iniciarSesion(@Valid @RequestBody SesionDto inicioSesion) {
+		return manejadorUsuario.iniciarSesion(inicioSesion);
 	}
 
 	@SuppressWarnings("rawtypes")

@@ -74,4 +74,9 @@ public class ServicioUsuario {
 				.orElseThrow(() -> new ExcepcionElementoNoEncontrado(USUARIO_NO_ENCONTRADO));
 	}
 
+	public Usuario buscarUsuarioPorCorreo(String correo) {
+		return repositorioUsuario.buscarPorCorreo(correo)
+				.orElseThrow(() -> new ExcepcionElementoNoEncontrado(USUARIO_NO_ENCONTRADO));
+	}
+
 }

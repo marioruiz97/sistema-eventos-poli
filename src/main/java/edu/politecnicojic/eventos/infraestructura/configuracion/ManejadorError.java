@@ -18,6 +18,7 @@ import com.mongodb.MongoWriteException;
 
 import edu.politecnicojic.eventos.dominio.excepcion.ExcepcionElementoNoEncontrado;
 import edu.politecnicojic.eventos.dominio.excepcion.ExcepcionFlujo;
+import edu.politecnicojic.eventos.dominio.excepcion.ExcepcionInicioSesion;
 
 @ControllerAdvice
 public class ManejadorError extends ResponseEntityExceptionHandler {
@@ -40,6 +41,14 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
 		final String mensaje = "Se ha presentado un error de flujo, valide la acción realizada";
 		RespuestaApi<String> respuestaError = new RespuestaApi<>(mensaje, ex.getMessage());
 		HttpStatus status = (ex instanceof ExcepcionFlujo) ? HttpStatus.BAD_REQUEST : HttpStatus.NOT_FOUND;
+		return handleExceptionInternal(ex, respuestaError, new HttpHeaders(), status, request);
+	}
+
+	@ExceptionHandler(value = { ExcepcionInicioSesion.class })
+	protected ResponseEntity<Object> manejarExcepcionesInicioSesion(ExcepcionInicioSesion ex, WebRequest request) {
+		final String mensaje = "Los datos de inicio de sesión son incorrectos";
+		RespuestaApi<String> respuestaError = new RespuestaApi<>(mensaje, ex.getMessage());
+		HttpStatus status = HttpStatus.FORBIDDEN;
 		return handleExceptionInternal(ex, respuestaError, new HttpHeaders(), status, request);
 	}
 

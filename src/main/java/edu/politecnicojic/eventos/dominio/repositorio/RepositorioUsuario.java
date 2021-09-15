@@ -14,4 +14,6 @@ public interface RepositorioUsuario extends Repositorio {
 	@Override
 	Optional<Usuario> buscarPorIdentificacion(String identificacion);
 
+	Optional<Usuario> buscarPorCorreo(String correo);
+
 }
